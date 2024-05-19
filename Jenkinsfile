@@ -4,6 +4,7 @@ pipeline {
         stage('Compile and Clean') {
             steps {
                 sh 'echo Compile and Clean'
+                sh 'printenv'
                 sh 'mvn clean compile'
             }
         }
