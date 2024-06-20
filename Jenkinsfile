@@ -16,7 +16,7 @@ pipeline {
 
             post { 
                 always { 
-                    echo '13-Jenkinsfile Pipeline’da Test Raporu Script’i Yapilandirma-20/06/2024'
+                    sh 'echo 13-Jenkinsfile Pipeline’da Test Raporu Script’i Yapilandirma-20/06/2024...'
                     junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                 }
             }
