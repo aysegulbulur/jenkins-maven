@@ -48,7 +48,7 @@ pipeline {
         stage('Push to Repository') {
             steps {
                 sh 'echo Push to Repository...'
-                sh 'docker push -t aysegulbulur/docker_jenkins_pipeline:${BUILD_NUMBER}'
+                sh 'docker push aysegulbulur/docker_jenkins_pipeline:${BUILD_NUMBER}'
             }
         }
 
