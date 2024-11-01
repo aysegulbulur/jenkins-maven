@@ -29,9 +29,9 @@ pipeline {
             }
         }
         
-        stage('Build & Docker image') {
+        stage('Build Docker image') {
             steps {
-                sh 'echo Build & Docker image...'
+                sh 'echo Build Docker image...'
                 sh 'docker build -t aysegulbulur/docker_jenkins_pipeline:${BUILD_NUMBER} .'
             }
         }
