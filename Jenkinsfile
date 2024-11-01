@@ -28,6 +28,29 @@ pipeline {
                 sh 'mvn package'
             }
         }
+        
+        stage('Build & Docker Image') {
+            steps {
+                sh 'echo Build & Docker Image...'
+                sh 'docker build -t aysegulbulur/docker_jenkins_pipeline:${BUILD_NUMBER} .'
+            }
+        }
+        
+        stage('Docker login') {
+            steps {
+                sh 'echo Docker login...'
+                withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
+		    sh 'docker login -u aysegulbulur -p ${Dockerpwd}'
+		}
+            }
+        }
+        
+        stage('Push to Repository') {
+            steps {
+                sh 'echo Push to Repository...'
+                sh 'docker push -t aysegulbulur/docker_jenkins_pipeline:${BUILD_NUMBER}'
+            }
+        }
 
         stage('Archving') {
             steps {
