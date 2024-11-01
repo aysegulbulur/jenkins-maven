@@ -29,25 +29,25 @@ pipeline {
             }
         }
         
-        stage('Build & Docker Image') {
+        stage('Build & Docker image') {
             steps {
-                sh 'echo Build & Docker Image...'
+                sh 'echo Build & Docker image...'
                 sh 'docker build -t aysegulbulur/docker_jenkins_pipeline:${BUILD_NUMBER} .'
             }
         }
         
-        stage('Docker login') {
+        stage('Docker Login') {
             steps {
-                sh 'echo Docker login...'
+                sh 'echo Docker Login...'
                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
 		    sh 'docker login -u aysegulbulur -p ${Dockerpwd}'
 		}
             }
         }
         
-        stage('Push to Repository') {
+        stage('Docker Push') {
             steps {
-                sh 'echo Push to Repository...'
+                sh 'echo Docker Push...'
                 sh 'docker push aysegulbulur/docker_jenkins_pipeline:${BUILD_NUMBER}'
             }
         }
